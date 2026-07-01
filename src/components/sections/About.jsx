@@ -36,12 +36,14 @@ export default function About() {
 
         {/* Copy + expertise */}
         <div>
-          <div className="space-y-4 text-base leading-relaxed text-ink/75 sm:space-y-5 sm:text-lg">
-            <Reveal as="p" className="text-lg font-medium text-ink sm:text-xl">
+          <Reveal className="border-l-4 border-gold/70 pl-5">
+            <p className="text-lg font-semibold leading-relaxed text-ink sm:text-xl">
               {background.lead}
-            </Reveal>
-            <Reveal as="p">{background.body}</Reveal>
-          </div>
+            </p>
+          </Reveal>
+          <Reveal as="p" className="mt-6 text-base leading-relaxed text-ink/70 sm:text-lg">
+            {background.body}
+          </Reveal>
 
           <div className="mt-12 border-t border-line pt-8">
             <h3 className="eyebrow mb-12 text-ink/50">Founder expertise</h3>
@@ -66,13 +68,13 @@ export default function About() {
       </div>
 
       {/* Partner trust strip */}
-      <Reveal className="mt-20 border-t border-line pt-10">
+      <Reveal className="mt-16 border-t border-line pt-10 sm:mt-20">
         <p className="eyebrow mb-6 text-ink/45">Expertise forged across leading institutions</p>
-        <ul className="flex flex-wrap items-center gap-x-8 gap-y-4">
+        <ul className="flex flex-wrap gap-2.5">
           {background.partners.map((p) => (
             <li
               key={p}
-              className="font-display text-lg font-bold text-ink/35 transition-colors hover:text-brand sm:text-xl"
+              className="rounded-full border border-line bg-paper px-4 py-2 text-sm font-semibold text-ink/60 transition-colors hover:border-brand hover:text-brand"
             >
               {p}
             </li>

@@ -29,7 +29,7 @@ export default function Focus() {
             <motion.article
               key={area.title}
               variants={fadeUp}
-              className="group relative overflow-hidden rounded-3xl border border-line bg-paper p-8 transition-colors hover:border-brand sm:p-10"
+              className="group relative overflow-hidden rounded-3xl border border-line bg-paper p-6 transition-colors hover:border-brand sm:p-8 lg:p-10"
             >
               <div className="mb-6 inline-grid size-14 place-items-center rounded-2xl bg-brand/10 text-brand transition-colors group-hover:bg-brand group-hover:text-white">
                 <Icon className="size-7" />

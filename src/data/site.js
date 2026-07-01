@@ -37,6 +37,13 @@ export const org = {
     email: 'ascendforall24@gmail.com',
     address: 'Arat Kilo, Addis Ababa, Ethiopia (Around Tourist Hotel)',
   },
+  // Replace '#' with real profile URLs when available (empty href hides the icon).
+  socials: [
+    { label: 'Facebook', href: '#' },
+    { label: 'Instagram', href: '#' },
+    { label: 'LinkedIn', href: '#' },
+    { label: 'Twitter', href: '#' },
+  ],
 }
 
 export const nav = [

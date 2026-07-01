@@ -45,7 +45,7 @@ export default function Programs() {
                 rounded="rounded-none"
                 parallax
               />
-              <div className="flex flex-1 flex-col p-7 sm:p-8">
+              <div className="flex flex-1 flex-col p-6 sm:p-8">
                 <div className="mb-4 flex items-center gap-3">
                   <span className="grid size-11 place-items-center rounded-xl bg-brand text-white">
                     <Icon className="size-6" />

@@ -74,7 +74,9 @@ export default function Hero() {
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-gold opacity-75" />
               <span className="relative inline-flex size-2 rounded-full bg-gold" />
             </span>
-            <span className="eyebrow !tracking-[0.2em]">Disability-led · National NGO · Ethiopia</span>
+            <span className="eyebrow !tracking-[0.14em] sm:!tracking-[0.2em]">
+              Disability-led · National NGO · Ethiopia
+            </span>
           </motion.div>
 
           <h1 className="sr-only">
@@ -115,17 +117,17 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.65, ease: EASE }}
             className="mt-7 flex flex-wrap items-center gap-3 sm:mt-9"
           >
-            <Magnetic strength={0.4}>
+            <Magnetic strength={0.4} className="w-full sm:w-auto">
               <Link
                 to="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-brand px-7 py-4 font-bold text-white shadow-lg shadow-ink/30 transition-colors hover:bg-brand-deep"
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-7 py-4 font-bold text-white shadow-lg shadow-ink/30 transition-colors hover:bg-brand-deep sm:w-auto"
               >
                 <Heart className="size-5" aria-hidden="true" /> Donate now
               </Link>
             </Magnetic>
             <Link
               to="/programs"
-              className="group inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/5 px-7 py-4 font-bold text-white backdrop-blur-md transition-colors hover:bg-white/15"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/40 bg-white/5 px-7 py-4 font-bold text-white backdrop-blur-md transition-colors hover:bg-white/15 sm:w-auto"
             >
               Explore our work
               <ArrowUpRight className="size-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

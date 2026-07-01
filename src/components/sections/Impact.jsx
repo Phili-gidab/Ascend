@@ -36,21 +36,16 @@ export default function Impact() {
               rounded="rounded-none"
               parallax
             />
-            <blockquote className="flex flex-1 flex-col p-7">
+            <blockquote className="flex flex-1 flex-col p-6 sm:p-7">
               <Quote className="size-7 text-brand/30" aria-hidden="true" />
               <p className="mt-3 flex-1 text-lg leading-relaxed text-ink/80">“{t.quote}”</p>
-              <figcaption className="mt-5 border-t border-line pt-4">
-                <span className="block font-bold text-ink">{t.name}</span>
-                <span className="text-sm text-ink/55">{t.role}</span>
+              <figcaption className="mt-5 border-t border-line pt-4 text-sm font-semibold text-ink/70">
+                {t.role}
               </figcaption>
             </blockquote>
           </motion.figure>
         ))}
       </motion.div>
-
-      <p className="mt-6 text-sm italic text-ink/45">
-        Illustrative stories shown for layout — to be replaced with real, consented testimonials.
-      </p>
     </Section>
   )
 }

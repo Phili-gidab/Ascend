@@ -23,7 +23,7 @@ export default function VisionMission() {
       aria-labelledby="vision-heading"
       className="relative scroll-mt-24 overflow-hidden bg-ink px-6 py-16 text-cream sm:px-10 sm:py-24 md:py-32"
     >
-      <Chevrons className="pointer-events-none absolute -right-10 top-10 w-72 text-gold/10 md:w-96" />
+      <Chevrons className="pointer-events-none absolute -right-8 top-8 w-40 text-gold/10 sm:top-10 sm:w-64 md:w-96" />
 
       <div className="relative mx-auto w-full max-w-7xl">
         <Reveal className="mb-14 flex items-center gap-3">

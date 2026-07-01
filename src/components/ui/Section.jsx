@@ -34,7 +34,7 @@ export default function Section({
       className={`relative scroll-mt-24 px-6 py-16 sm:px-10 sm:py-24 md:py-32 ${t.bg} ${className}`}
     >
       <div className="mx-auto w-full max-w-7xl">
-        <div className="mb-12 md:mb-16">
+        <div className="mb-10 sm:mb-12 md:mb-16">
           {eyebrow && (
             <Reveal className="mb-5 flex items-center gap-3">
               <span className={`eyebrow ${t.eyebrow}`}>

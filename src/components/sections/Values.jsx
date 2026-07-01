@@ -24,7 +24,7 @@ export default function Values() {
           <motion.li
             key={v.title}
             variants={fadeUp}
-            className="group relative flex flex-col bg-paper p-8 transition-colors hover:bg-sand"
+            className="group relative flex flex-col bg-paper p-6 transition-colors hover:bg-sand sm:p-8"
           >
             <span
               aria-hidden="true"

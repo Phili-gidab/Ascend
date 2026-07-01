@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X, Heart } from 'lucide-react'
 import { nav, org } from '../../data/site'
@@ -40,9 +40,9 @@ export default function Navbar() {
         className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 sm:px-10"
       >
         <Link to="/" className="group flex items-center gap-2.5" aria-label={`${org.name} — home`}>
-          <LogoIcon className="size-10" />
+          <LogoIcon className="size-9 sm:size-10" />
           <span
-            className={`font-display text-lg font-extrabold tracking-tight transition-colors ${
+            className={`font-display text-base font-extrabold tracking-tight transition-colors sm:text-lg ${
               solid ? 'text-ink' : 'text-white'
             }`}
           >
@@ -55,14 +55,17 @@ export default function Navbar() {
         <ul className="hidden items-center gap-1 md:flex">
           {nav.map((item) => (
             <li key={item.to}>
-              <Link
+              <NavLink
                 to={item.to}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-                  solid ? 'text-ink/70 hover:text-brand' : 'text-white/90 hover:text-white'
-                }`}
+                className={({ isActive }) => {
+                  const base = 'rounded-full px-4 py-2 text-sm font-semibold transition-colors'
+                  if (solid)
+                    return `${base} ${isActive ? 'bg-brand/10 text-brand' : 'text-ink/70 hover:text-brand'}`
+                  return `${base} ${isActive ? 'bg-white/15 text-white' : 'text-white/90 hover:text-white'}`
+                }}
               >
                 {item.label}
-              </Link>
+              </NavLink>
             </li>
           ))}
           <li className="ml-2">
@@ -103,17 +106,30 @@ export default function Navbar() {
             className="overflow-hidden border-t border-line bg-paper/95 backdrop-blur-xl md:hidden"
           >
             <ul className="flex flex-col gap-1 px-6 py-6">
-              {[...nav, { to: '/contact', label: 'Donate' }].map((item, i) => (
-                <li key={`${item.to}-${i}`}>
-                  <Link
+              {nav.map((item) => (
+                <li key={item.to}>
+                  <NavLink
                     to={item.to}
                     onClick={() => setOpen(false)}
-                    className="block rounded-xl px-4 py-3 font-display text-2xl font-bold text-ink hover:text-brand"
+                    className={({ isActive }) =>
+                      `block rounded-xl px-4 py-3 font-display text-2xl font-bold transition-colors ${
+                        isActive ? 'text-brand' : 'text-ink hover:text-brand'
+                      }`
+                    }
                   >
                     {item.label}
-                  </Link>
+                  </NavLink>
                 </li>
               ))}
+              <li className="mt-3">
+                <Link
+                  to="/contact"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-center gap-2 rounded-full bg-brand px-5 py-3.5 font-bold text-white"
+                >
+                  <Heart className="size-4" aria-hidden="true" /> Donate
+                </Link>
+              </li>
             </ul>
           </motion.div>
         )}

@@ -1,13 +1,13 @@
 import { useLayoutEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Heart } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Heart } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { org, visionMission, heroImage, stats } from '../../data/site'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import Magnetic from '../ui/Magnetic'
 import Counter from '../ui/Counter'
-import ImageSlot from '../ui/ImageSlot'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -15,17 +15,19 @@ const EASE = [0.16, 1, 0.3, 1]
 
 export default function Hero() {
   const root = useRef(null)
-  const photo = useRef(null)
+  const media = useRef(null)
   const reduced = useReducedMotion()
 
   useLayoutEffect(() => {
     if (reduced) return
     const ctx = gsap.context(() => {
+      // Slow Ken-Burns zoom + drift as the hero scrolls away.
       gsap.fromTo(
-        photo.current,
-        { yPercent: -5 },
+        media.current,
+        { scale: 1.05, yPercent: 0 },
         {
-          yPercent: 6,
+          scale: 1.2,
+          yPercent: 8,
           ease: 'none',
           scrollTrigger: { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true },
         },
@@ -35,24 +37,44 @@ export default function Hero() {
   }, [reduced])
 
   return (
-    <section id="top" ref={root} aria-label="Introduction" className="relative overflow-hidden bg-paper">
-      {/* soft warm accent */}
+    <section
+      id="top"
+      ref={root}
+      aria-label="Introduction"
+      className="relative flex min-h-[100svh] flex-col overflow-hidden bg-ink"
+    >
+      {/* Background photo (brand gradient shows through if it fails to load) */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-20 top-0 size-[55vw] max-w-2xl rounded-full bg-gold/10 blur-[130px]"
+        className="absolute inset-0"
+        style={{ background: 'linear-gradient(135deg, var(--color-brand-deep), var(--color-ink))' }}
+      />
+      <img
+        ref={media}
+        src={heroImage}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 size-full origin-center object-cover"
       />
 
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 pb-16 pt-32 sm:px-10 lg:grid-cols-[1.05fr_0.95fr] lg:pb-24 lg:pt-40">
-        {/* Copy */}
-        <div>
+      {/* Scrims for text legibility */}
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/55 to-ink/40" />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/25 to-transparent" />
+
+      {/* Content */}
+      <div className="relative z-10 flex flex-1 flex-col">
+        <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-end px-6 pb-10 pt-28 sm:px-10 sm:pb-14 sm:pt-32">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: EASE }}
-            className="mb-7 flex items-center gap-3"
+            className="mb-6 inline-flex w-fit items-center gap-2.5 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-cream backdrop-blur-md"
           >
-            <span aria-hidden="true" className="h-px w-12 bg-gold" />
-            <span className="eyebrow text-brand">Disability-led · National NGO · Ethiopia</span>
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-gold opacity-75" />
+              <span className="relative inline-flex size-2 rounded-full bg-gold" />
+            </span>
+            <span className="eyebrow !tracking-[0.2em]">Disability-led · National NGO · Ethiopia</span>
           </motion.div>
 
           <h1 className="sr-only">
@@ -63,7 +85,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: EASE }}
-            className="text-[clamp(2.6rem,6vw,5.5rem)] font-extrabold leading-[1.02] tracking-[-0.02em] text-ink"
+            className="max-w-4xl text-[clamp(2.15rem,6.5vw,6rem)] font-extrabold leading-[1.05] tracking-[-0.02em] text-white sm:leading-[1.02]"
           >
             Everyone deserves the chance to{' '}
             <span className="relative inline-block whitespace-nowrap">
@@ -73,108 +95,65 @@ export default function Hero() {
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.7, delay: 0.55, ease: EASE }}
-                className="absolute -bottom-1 left-0 h-[0.12em] w-full origin-left rounded-full bg-gold"
+                className="absolute -bottom-1 left-0 h-[0.1em] w-full origin-left rounded-full bg-gold"
               />
             </span>
           </motion.div>
 
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.45, ease: EASE }}
-            className="mt-7 max-w-xl text-lg text-ink/70 sm:text-xl"
+            transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
+            className="mt-5 max-w-xl text-base text-cream/85 sm:mt-6 sm:text-xl"
           >
             {visionMission.mission}
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: EASE }}
-            className="mt-9 flex flex-wrap items-center gap-3"
+            transition={{ duration: 0.8, delay: 0.65, ease: EASE }}
+            className="mt-7 flex flex-wrap items-center gap-3 sm:mt-9"
           >
             <Magnetic strength={0.4}>
-              <a
-                href="#donate"
-                className="group inline-flex items-center gap-2 rounded-full bg-brand px-7 py-4 font-bold text-white shadow-lg shadow-brand/20 transition-colors hover:bg-brand-deep"
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-2 rounded-full bg-brand px-7 py-4 font-bold text-white shadow-lg shadow-ink/30 transition-colors hover:bg-brand-deep"
               >
                 <Heart className="size-5" aria-hidden="true" /> Donate now
-              </a>
+              </Link>
             </Magnetic>
-            <a
-              href="#programs"
-              className="group inline-flex items-center gap-2 rounded-full border border-ink/15 px-7 py-4 font-bold text-ink transition-colors hover:border-brand hover:text-brand"
+            <Link
+              to="/programs"
+              className="group inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/5 px-7 py-4 font-bold text-white backdrop-blur-md transition-colors hover:bg-white/15"
             >
               Explore our work
               <ArrowUpRight className="size-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+            </Link>
           </motion.div>
 
-          <motion.ul
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-10 flex flex-wrap gap-2.5"
-            aria-label="Regions of operation"
-          >
-            {org.coverage.map((region) => (
-              <li
-                key={region}
-                className="rounded-full border border-line bg-sand/60 px-4 py-1.5 text-sm text-ink/70"
-              >
-                {region}
-              </li>
-            ))}
-          </motion.ul>
+          <div className="mt-8 flex items-center gap-2 text-sm text-cream/55 sm:mt-12">
+            <ArrowDown className="size-4 animate-bounce text-gold" aria-hidden="true" />
+            Scroll to explore
+          </div>
         </div>
 
-        {/* Composition: arched photo + offset gold block + floating card */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.25, ease: EASE }}
-          className="relative mx-auto w-full max-w-sm lg:max-w-none"
+        {/* Overlaid stat bar */}
+        <motion.dl
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8, ease: EASE }}
+          className="mx-auto grid w-full max-w-7xl grid-cols-2 gap-px overflow-hidden border-t border-white/15 bg-white/10 backdrop-blur-md sm:grid-cols-4"
         >
-          <div
-            aria-hidden="true"
-            className="absolute -right-4 -top-4 h-full w-full rounded-t-[11rem] rounded-b-[2rem] bg-gold/25"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute -left-5 bottom-16 size-24 rounded-full border-[6px] border-brand/15"
-          />
-          <div ref={photo} className="relative will-change-transform">
-            <ImageSlot
-              src={heroImage}
-              alt="A person with a disability supported by ASCEND FOR ALL in Ethiopia"
-              label="Add hero photo — /images/hero.jpg"
-              ratio="aspect-[4/5]"
-              rounded="rounded-t-[11rem] rounded-b-[2rem]"
-              className="border border-line shadow-2xl shadow-ink/10"
-            />
-          </div>
-
-          <div className="absolute -bottom-6 -left-4 max-w-[15rem] rounded-2xl border border-line bg-paper p-4 shadow-xl shadow-ink/10 sm:-left-6">
-            <p className="font-display text-3xl font-extrabold text-brand">1 in 6</p>
-            <p className="mt-0.5 text-xs leading-snug text-ink/65">
-              people live with a disability. Together, we help them rise.
-            </p>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Stat band */}
-      <div className="bg-ink">
-        <dl className="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-ink-line sm:grid-cols-4">
           {stats.map((s) => (
-            <div key={s.label} className="bg-ink px-6 py-7 sm:px-8">
+            <div key={s.label} className="bg-ink/30 px-5 py-6 sm:px-7">
               <dd className="font-display text-3xl font-extrabold text-gold sm:text-4xl">
                 <Counter value={s.value} suffix={s.suffix} />
               </dd>
               <dt className="mt-1 text-xs leading-snug text-cream/70 sm:text-sm">{s.label}</dt>
             </div>
           ))}
-        </dl>
+        </motion.dl>
       </div>
     </section>
   )

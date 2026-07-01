@@ -8,7 +8,6 @@ export default function Principles() {
   return (
     <Section
       id="principles"
-      index="07"
       eyebrow="How we work"
       title="Operating principles."
       highlight={[1]}

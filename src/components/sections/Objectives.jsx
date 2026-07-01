@@ -8,7 +8,6 @@ export default function Objectives() {
   return (
     <Section
       id="objectives"
-      index="10"
       eyebrow="Specific objectives"
       title="How we turn goals into action."
       highlight={[5]}

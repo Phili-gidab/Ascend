@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Mail, Phone, MapPin } from 'lucide-react'
 import { org, nav } from '../../data/site'
 
@@ -31,14 +32,19 @@ export default function Footer() {
           <nav aria-label="Footer">
             <h2 className="eyebrow mb-4 text-cream/50">Explore</h2>
             <ul className="space-y-2.5">
+              <li>
+                <Link to="/" className="text-cream/70 transition-colors hover:text-gold">
+                  Home
+                </Link>
+              </li>
               {nav.map((item) => (
-                <li key={item.id}>
-                  <a
-                    href={`#${item.id}`}
+                <li key={item.to}>
+                  <Link
+                    to={item.to}
                     className="text-cream/70 transition-colors hover:text-gold"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

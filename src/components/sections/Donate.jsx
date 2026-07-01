@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Heart, ArrowUpRight, BookOpen, Accessibility, Briefcase } from 'lucide-react'
 import { gsap } from 'gsap'
@@ -60,7 +61,7 @@ export default function Donate() {
       <div className="relative mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-20">
         <div>
           <Reveal className="mb-5 flex items-center gap-3">
-            <span className="eyebrow text-gold">11 — {donate.eyebrow}</span>
+            <span className="eyebrow text-gold">{donate.eyebrow}</span>
             <span className="h-px flex-1 bg-cream/20" />
           </Reveal>
           <AnimatedHeading
@@ -77,20 +78,20 @@ export default function Donate() {
 
           <Reveal delay={0.2} className="mt-9 flex flex-wrap items-center gap-3">
             <Magnetic strength={0.4}>
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="group inline-flex items-center gap-2 rounded-full bg-cream px-7 py-4 font-bold text-brand transition-colors hover:bg-white"
               >
                 <Heart className="size-5" aria-hidden="true" /> Become a donor
-              </a>
+              </Link>
             </Magnetic>
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="group inline-flex items-center gap-2 rounded-full border border-cream/40 px-7 py-4 font-bold text-cream transition-colors hover:border-cream hover:bg-white/10"
             >
               Partner with us
               <ArrowUpRight className="size-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+            </Link>
           </Reveal>
         </div>
 

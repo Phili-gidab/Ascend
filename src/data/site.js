@@ -40,11 +40,10 @@ export const org = {
 }
 
 export const nav = [
-  { id: 'about', label: 'About' },
-  { id: 'programs', label: 'Programs' },
-  { id: 'focus', label: 'Approach' },
-  { id: 'impact', label: 'Impact' },
-  { id: 'contact', label: 'Contact' },
+  { to: '/about', label: 'About' },
+  { to: '/programs', label: 'Programs' },
+  { to: '/impact', label: 'Impact' },
+  { to: '/contact', label: 'Contact' },
 ]
 
 export const marqueeWords = [

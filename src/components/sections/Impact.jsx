@@ -9,7 +9,6 @@ export default function Impact() {
   return (
     <Section
       id="impact"
-      index="08"
       eyebrow="Impact & stories"
       title="Change, in people's own words."
       highlight={[2]}

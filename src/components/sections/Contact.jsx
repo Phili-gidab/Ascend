@@ -186,7 +186,7 @@ export default function Contact() {
     >
       <div className="relative mx-auto w-full max-w-7xl">
         <Reveal className="mb-5 flex items-center gap-3">
-          <span className="eyebrow text-brand">12 — Contact</span>
+          <span className="eyebrow text-brand">Get in touch</span>
           <span className="h-px flex-1 bg-line" />
         </Reveal>
 

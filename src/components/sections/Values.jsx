@@ -7,7 +7,6 @@ export default function Values() {
   return (
     <Section
       id="values"
-      index="06"
       eyebrow="What guides us"
       title="Five values we never compromise."
       highlight={[1]}

@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger)
  *
  * Disabled entirely under prefers-reduced-motion.
  */
-export function useScrollFx(enabled = true) {
+export function useScrollFx(enabled = true, routeKey = '') {
   useEffect(() => {
     if (!enabled) return
 
@@ -42,5 +42,6 @@ export function useScrollFx(enabled = true) {
       ctx.revert()
       clearTimeout(t)
     }
-  }, [enabled])
+    // routeKey forces re-init when the page changes (new parallax targets).
+  }, [enabled, routeKey])
 }

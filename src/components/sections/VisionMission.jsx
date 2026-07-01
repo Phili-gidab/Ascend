@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Eye, Compass, ArrowUpRight } from 'lucide-react'
 import Reveal from '../ui/Reveal'
 import { visionMission } from '../../data/site'
@@ -26,7 +27,7 @@ export default function VisionMission() {
 
       <div className="relative mx-auto w-full max-w-7xl">
         <Reveal className="mb-14 flex items-center gap-3">
-          <span className="eyebrow text-gold">05 — Our purpose</span>
+          <span className="eyebrow text-gold">Our purpose</span>
           <span className="h-px flex-1 bg-ink-line" />
         </Reveal>
 
@@ -59,13 +60,13 @@ export default function VisionMission() {
             <p className="text-lg leading-relaxed text-cream/75 sm:text-xl">
               {visionMission.mission}
             </p>
-            <a
-              href="#programs"
+            <Link
+              to="/programs"
               className="group mt-7 inline-flex items-center gap-2 font-semibold text-gold transition-colors hover:text-cream"
             >
               See how we deliver it
               <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+            </Link>
           </Reveal>
         </div>
       </div>

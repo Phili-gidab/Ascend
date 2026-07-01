@@ -10,7 +10,6 @@ export default function About() {
   return (
     <Section
       id="about"
-      index="01"
       eyebrow="Who we are"
       title="A national, disability-led movement for inclusion."
       highlight={[2]}
@@ -24,10 +23,10 @@ export default function About() {
             alt="Community members supported by ASCEND FOR ALL in Ethiopia"
             label="Add photo — community"
             ratio="aspect-[4/5]"
-            rounded="rounded-t-[10rem] rounded-b-3xl"
+            rounded="rounded-t-[4.5rem] rounded-b-3xl sm:rounded-t-[7rem] lg:rounded-t-[10rem]"
             className="border border-line shadow-xl shadow-ink/5"
           />
-          <div className="absolute -bottom-5 -right-5 max-w-[12rem] rounded-2xl border border-line bg-paper p-4 shadow-lg shadow-ink/10">
+          <div className="absolute -bottom-4 -right-2 max-w-[11rem] rounded-2xl border border-line bg-paper p-3.5 shadow-lg shadow-ink/10 sm:-bottom-5 sm:-right-5 sm:max-w-[12rem] sm:p-4">
             <p className="font-display text-xl font-extrabold text-brand">Est. {org.established.split(',')[1]?.trim() || '2026'}</p>
             <p className="mt-0.5 text-xs text-ink/60">
               Registered with ACSO · Reg. No. {org.registration.certificate}
@@ -37,8 +36,8 @@ export default function About() {
 
         {/* Copy + expertise */}
         <div>
-          <div className="space-y-5 text-lg leading-relaxed text-ink/75">
-            <Reveal as="p" className="text-xl font-medium text-ink">
+          <div className="space-y-4 text-base leading-relaxed text-ink/75 sm:space-y-5 sm:text-lg">
+            <Reveal as="p" className="text-lg font-medium text-ink sm:text-xl">
               {background.lead}
             </Reveal>
             <Reveal as="p">{background.body}</Reveal>

@@ -7,7 +7,6 @@ export default function Goals() {
   return (
     <Section
       id="goals"
-      index="09"
       eyebrow="Our goals"
       title="The change we are working toward."
       highlight={[2]}

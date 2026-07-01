@@ -16,7 +16,6 @@ export default function Programs() {
   return (
     <Section
       id="programs"
-      index="02"
       eyebrow="What we do"
       title="Four sectors, one inclusive future."
       highlight={[1]}

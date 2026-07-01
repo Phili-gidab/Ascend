@@ -10,7 +10,6 @@ export default function Focus() {
   return (
     <Section
       id="focus"
-      index="03"
       eyebrow="Our approach"
       title="A rights-based approach to disability."
       highlight={[1]}

@@ -1,26 +1,35 @@
 import { useState } from 'react'
 import { ImagePlus } from 'lucide-react'
 
+/** Build a responsive srcset for Unsplash CDN URLs (no-op for local files). */
+const UNSPLASH_WIDTHS = [480, 768, 1080, 1400]
+const srcSetFor = (src) => {
+  if (!src?.includes('images.unsplash.com')) return undefined
+  return UNSPLASH_WIDTHS.map((w) => `${src.replace(/w=\d+/, `w=${w}`)} ${w}w`).join(', ')
+}
+
 /**
  * Photography slot.
  *
  * Drop a real image at `src` (e.g. /images/program-health.jpg in /public) and
- * it shows automatically. Until then — or if the file is missing — it renders a
- * branded placeholder describing what photo belongs here, so the layout is
- * never broken and content editors know exactly what to supply.
+ * it shows automatically. If the file is missing it renders a quiet branded
+ * placeholder so the layout is never broken. Every photo gets the shared
+ * `.photo-grade` treatment so mixed photography reads as one set.
  *
- * @param {string} src    path under /public (optional)
+ * @param {string} src    image URL or path under /public (optional)
  * @param {string} alt    accessible description (required when a real photo is used)
- * @param {string} label  placeholder hint shown when no image is present
+ * @param {string} label  placeholder text shown when no image is present
  * @param {string} ratio  aspect-ratio utility class (e.g. 'aspect-[4/3]')
+ * @param {string} sizes  responsive `sizes` hint for CDN images
  */
 export default function ImageSlot({
   src,
   alt = '',
-  label = 'Add photo',
+  label = 'Photo coming soon',
   ratio = 'aspect-[4/3]',
   rounded = 'rounded-3xl',
   className = '',
+  sizes = '(min-width: 1024px) 50vw, 100vw',
   parallax = false,
 }) {
   const [failed, setFailed] = useState(false)
@@ -33,10 +42,12 @@ export default function ImageSlot({
     : 'size-full object-cover'
 
   return (
-    <div className={`relative overflow-hidden ${rounded} ${ratio} ${className}`}>
+    <div className={`photo-grade relative overflow-hidden ${rounded} ${ratio} ${className}`}>
       {showImage ? (
         <img
           src={src}
+          srcSet={srcSetFor(src)}
+          sizes={srcSetFor(src) ? sizes : undefined}
           alt={alt}
           loading="lazy"
           onError={() => setFailed(true)}
@@ -49,10 +60,9 @@ export default function ImageSlot({
           role="img"
           aria-label={alt || label}
         >
-          <div className="text-ink/45">
+          <div className="text-ink/40">
             <ImagePlus className="mx-auto size-8" aria-hidden="true" />
             <p className="mt-2 text-sm font-semibold">{label}</p>
-            {src && <p className="mt-1 text-xs text-ink/30">{src}</p>}
           </div>
         </div>
       )}

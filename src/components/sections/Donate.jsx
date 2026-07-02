@@ -6,6 +6,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Reveal from '../ui/Reveal'
 import AnimatedHeading from '../ui/AnimatedHeading'
+import Contours from '../ui/Contours'
 import Magnetic from '../ui/Magnetic'
 import { donate, donateImage } from '../../data/site'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
@@ -57,6 +58,7 @@ export default function Donate() {
         aria-hidden="true"
         className="pointer-events-none absolute -left-24 top-0 size-[40vw] max-w-xl rounded-full bg-gold opacity-15 blur-[130px]"
       />
+      <Contours className="text-cream" opacity={0.07} />
 
       <div className="relative mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-20">
         <div>
@@ -121,9 +123,34 @@ export default function Donate() {
               )
             })}
           </motion.ul>
-          <Reveal as="p" className="mt-5 text-sm text-cream/70">
-            {donate.note}
-          </Reveal>
+          {donate.methods?.length > 0 ? (
+            <Reveal className="mt-6 rounded-2xl border border-cream/15 bg-ink/40 p-5 backdrop-blur-md">
+              <p className="eyebrow mb-4 text-gold">Ways to give</p>
+              <ul className="space-y-3">
+                {donate.methods.map((m) => (
+                  <li key={m.method} className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <span className="font-bold text-cream">{m.method}</span>
+                    {m.href ? (
+                      <a
+                        href={m.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-cream/80 underline decoration-gold/60 underline-offset-4 hover:decoration-gold"
+                      >
+                        {m.detail}
+                      </a>
+                    ) : (
+                      <span className="select-all text-sm text-cream/80">{m.detail}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          ) : (
+            <Reveal as="p" className="mt-5 text-sm text-cream/70">
+              {donate.note}
+            </Reveal>
+          )}
         </div>
       </div>
     </section>

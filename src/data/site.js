@@ -11,10 +11,20 @@
 const img = (id, w = 1400) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`
 
-export const heroImage = img('1515658323406-25d61c141a6e', 1920)
-export const aboutImage = img('1632215861513-130b66fe97f4', 1200)
-export const bandImage = img('1495743472318-995197a2acc4', 1920)
-export const donateImage = img('1543689604-6fe8dbcd1f59', 1920)
+// Hero — smiling African schoolgirl in her wheelchair, bright school uniform.
+// The source photo is portrait, so wide screens get a server-side face-aware
+// 16:9 crop from the CDN; portrait screens use the original framing.
+export const heroImage = img('1747214300383-81342dfa5f8e', 1080)
+export const heroImageWide =
+  'https://images.unsplash.com/photo-1747214300383-81342dfa5f8e?auto=format&fit=crop&crop=faces&w=1920&h=1080&q=80'
+// About — school-opening celebration with drums, Ethiopia (community, portrait 4:5)
+export const aboutImage = img('1505147634308-9b83c4cb46b4', 1200)
+// About collage inset — smiling Ethiopian girl in traditional dress
+export const aboutImageSecondary = img('1764145177622-8317fbfe1877', 480)
+// Band — children running down the street after school in Ale, Ethiopia
+export const bandImage = img('1588349482083-036b31c6eca3', 1920)
+// Donate — Ethiopian graduate in cap & gown embraced by elders in traditional netela
+export const donateImage = img('1640117792676-595d18b594dc', 1920)
 
 export const org = {
   name: 'ASCEND FOR ALL',
@@ -50,6 +60,8 @@ export const nav = [
   { to: '/about', label: 'About' },
   { to: '/programs', label: 'Programs' },
   { to: '/impact', label: 'Impact' },
+  { to: '/gallery', label: 'Gallery' },
+  { to: '/blog', label: 'Blog' },
   { to: '/contact', label: 'Contact' },
 ]
 
@@ -93,6 +105,31 @@ export const background = {
     'OSSHD',
     'Mekelle University',
     'Bureau of Labor & Social Affairs (BoLSA)',
+  ],
+}
+
+/**
+ * Leadership & board. Filimon Aregay is from the official AFA profile; the
+ * board names are PLACEHOLDERS — update `name` when confirmed. Portraits are
+ * optional: drop a photo at the `image` path in /public/images and it replaces
+ * the initials monogram automatically. `initials` overrides the monogram
+ * letters while a real name is not yet public.
+ */
+export const team = {
+  executive: {
+    name: 'Filimon Aregay',
+    role: 'Executive Manager',
+    bio: 'Leads AFA’s strategy, partnerships, and programs — bringing years of multidisciplinary experience across social work, safeguarding, and disability inclusion in Ethiopia.',
+    image: '/images/team-filimon.jpg',
+    email: 'ascendforall24@gmail.com',
+    phoneHref: 'tel:+251914125845',
+  },
+  board: [
+    { name: 'Board Chairperson', role: 'Chairperson of the Board', initials: 'CH', image: '/images/team-chair.jpg' },
+    { name: 'Board Member', role: 'Vice Chairperson', initials: 'VC', image: '/images/team-vice.jpg' },
+    { name: 'Board Member', role: 'Secretary', initials: 'SC', image: '/images/team-secretary.jpg' },
+    { name: 'Board Member', role: 'Member', initials: 'BM', image: '/images/team-member1.jpg' },
+    { name: 'Board Member', role: 'Member', initials: 'BM', image: '/images/team-member2.jpg' },
   ],
 }
 
@@ -193,28 +230,32 @@ export const programs = [
     icon: 'health',
     desc: 'Maternal & child health, WASH, MHPSS, and disease prevention — with every facility made disability-friendly and accessible.',
     points: ['Maternal & child health', 'WASH & hygiene promotion', 'Psychosocial support (MHPSS)'],
-    image: img('1509099863731-ef4bff19e808'),
+    // African nurse consulting a young girl at a clinic (maternal & child health)
+    image: img('1536064479547-7ee40b74b807'),
   },
   {
     title: 'Education',
     icon: 'education',
     desc: 'Inclusive, accessible learning — reducing dropout, adapting infrastructure, and supplying Braille and sign-language materials.',
     points: ['Education in Emergencies', 'Accessible schools', 'Braille & sign-language tools'],
-    image: img('1536337005238-94b997371b40'),
+    // Joyful classroom in East Africa — child flashing a peace sign
+    image: img('1620969910995-4bbe4eaa32c1'),
   },
   {
     title: 'Protection',
     icon: 'protection',
     desc: 'Preventing and responding to GBV against women, girls and children with disabilities, with safeguarding and trauma-informed care.',
     points: ['GBV prevention & response', 'Safeguarding', 'Trauma healing & counseling'],
-    image: img('1473594659356-a404044aa2c2'),
+    // Ethiopian women in traditional white netela with a young girl (family, care)
+    image: img('1640117792694-97b464c05f66'),
   },
   {
     title: 'Economic Empowerment',
     icon: 'economic',
     desc: 'Pathways to independence: income-generating activities, vocational training, entrepreneurship, and inclusive employment.',
     points: ['Income-generating activities', 'Vocational & life skills', 'Inclusive employment'],
-    image: img('1509099955921-f0b4ed0c175c'),
+    // African tailor at work in his own shop (livelihoods, entrepreneurship)
+    image: img('1687422808289-e721259c9eb4'),
   },
 ]
 
@@ -229,21 +270,110 @@ export const testimonials = [
       'With assistive devices and a small business grant, I now run my own tailoring shop and support my family.',
     name: 'Illustrative story',
     role: 'Entrepreneur · Tigray',
-    image: img('1521510186458-bbbda7aef46b'),
+    // Tailor working at a sewing machine in his shop
+    image: img('1744808336885-c6b2425c3f1e'),
   },
   {
     quote:
       'My daughter went back to school once the classroom was made accessible and her teachers were trained.',
     name: 'Illustrative story',
     role: 'Parent · Amhara',
-    image: img('1473649085228-583485e6e4d7'),
+    // Smiling woman wearing a headscarf
+    image: img('1743871698163-a2e470d8eac7'),
   },
   {
     quote:
       'The counseling and peer support helped me rebuild my confidence and speak up for my rights.',
     name: 'Illustrative story',
     role: 'Youth advocate · Addis Ababa',
-    image: img('1505148359496-35d8d1ec9645'),
+    // Joyful young man living with cerebral palsy, photographed at home
+    image: img('1752057932466-8b78fd0e808e'),
+  },
+]
+
+/**
+ * Gallery — verified, license-free photography (Unsplash) of Ethiopian life
+ * and disability inclusion. `tall` marks portrait frames in the filmstrip.
+ * Replace freely with AFA's own consented photos as they become available.
+ */
+export const gallery = [
+  {
+    image: img('1764145144753-922ae256714b', 1200),
+    tall: true,
+    title: 'Ashenda in full colour',
+    place: 'Tigray',
+    desc: 'Girls in traditional dress dance through the streets during the Ashenda festival.',
+  },
+  {
+    image: img('1740572497450-4f4f2d3be984', 1200),
+    title: 'Teammates',
+    place: 'Wheelchair basketball',
+    desc: 'Players ready their chairs together before a game — sport as independence.',
+  },
+  {
+    image: img('1626598442658-ea6a1a5943df', 1200),
+    tall: true,
+    title: 'The guiding line',
+    place: 'Piazza, Addis Ababa',
+    desc: 'Tactile paving threads through the city, guiding pedestrians with visual impairments.',
+  },
+  {
+    image: img('1588349242964-28b720afcb36', 1200),
+    title: 'Full speed',
+    place: 'Ale, Ethiopia',
+    desc: 'A boy races his wheel down the village road — a game played the world over.',
+  },
+  {
+    image: img('1633539656332-d0861676473a', 1200),
+    tall: true,
+    title: 'Unstoppable joy',
+    place: 'Ethiopia',
+    desc: 'A laugh that needs no caption.',
+  },
+  {
+    image: img('1778086017952-063be172d3a8', 1200),
+    title: 'Pilgrims',
+    place: 'Lalibela',
+    desc: 'Pilgrims gather among the rock-hewn churches of Lalibela.',
+  },
+  {
+    image: img('1598122666068-59b41e0a3193', 1200),
+    tall: true,
+    title: 'Heritage worn proudly',
+    place: 'Tigray',
+    desc: 'Traditional dress at the Ashenda celebration.',
+  },
+  {
+    image: img('1647316703389-e114712500e5', 1200),
+    title: 'Addis after dark',
+    place: 'Addis Ababa',
+    desc: 'The capital at night — a city of four million stories.',
+  },
+  {
+    image: img('1588349500046-854848044870', 1200),
+    tall: true,
+    title: 'The long road',
+    place: "Weyt'o Valley",
+    desc: 'Two friends head home through the southern lowlands.',
+  },
+  {
+    image: img('1782283034357-47f4185af8f8', 1200),
+    title: 'Quiet faith',
+    place: 'Lalibela',
+    desc: 'A moment of stillness beside centuries-old stone.',
+  },
+  {
+    image: img('1764145177622-8317fbfe1877', 1200),
+    tall: true,
+    title: 'A bright future',
+    place: 'Ethiopia',
+    desc: 'Every child deserves the chance to ascend.',
+  },
+  {
+    image: img('1741940365437-e55b919a89d3', 1200),
+    title: 'Mother and child',
+    place: 'East Africa',
+    desc: 'Care is where every ascent begins.',
   },
 ]
 
@@ -257,6 +387,15 @@ export const donate = {
     { amount: '$200', impact: 'Vocational training for a youth' },
   ],
   note: 'AFA is registered with ACSO (Reg. No. 7818). Online giving is being set up — for now, contact us to give or partner.',
+  /**
+   * Ways to give — fill these in as payment rails open and they appear on the
+   * site automatically (the `note` above shows only while this list is empty).
+   * Examples:
+   *   { method: 'Bank transfer', detail: 'Commercial Bank of Ethiopia · Account 1000XXXXXXX · ASCEND FOR ALL' },
+   *   { method: 'Telebirr', detail: '+251 9X XXX XXXX' },
+   *   { method: 'PayPal', detail: 'paypal.me/ascendforall', href: 'https://paypal.me/ascendforall' },
+   */
+  methods: [],
 }
 
 export const objectives = [

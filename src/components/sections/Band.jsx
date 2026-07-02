@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Reveal from '../ui/Reveal'
 import AnimatedHeading from '../ui/AnimatedHeading'
+import Contours from '../ui/Contours'
 import { bandImage, org } from '../../data/site'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 
@@ -45,6 +46,7 @@ export default function Band() {
       />
       <div aria-hidden="true" className="absolute inset-0 bg-brand-deep/80" />
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
+      <Contours className="text-gold" opacity={0.14} />
 
       <div className="relative mx-auto w-full max-w-7xl px-6 text-cream sm:px-10">
         <AnimatedHeading

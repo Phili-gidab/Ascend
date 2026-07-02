@@ -31,7 +31,7 @@ export default function Impact() {
             <ImageSlot
               src={t.image}
               alt={`Portrait — ${t.role}`}
-              label={`Add portrait — ${t.image}`}
+              label="Portrait coming soon"
               ratio="aspect-[4/3]"
               rounded="rounded-none"
               parallax

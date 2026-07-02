@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
-import { Mail, Phone, MapPin, ArrowUp, ArrowUpRight, Heart } from 'lucide-react'
+import { Mail, Phone, MapPin, ArrowUp, ArrowUpRight, Heart, PersonStanding } from 'lucide-react'
 import { org, nav } from '../../data/site'
+import { scrollTo } from '../../hooks/useLenis'
+import Contours from '../ui/Contours'
 
 // Brand marks as inline SVG (lucide dropped brand icons over trademark concerns).
 const FacebookIcon = (props) => (
@@ -35,26 +37,36 @@ const socialIcons = {
 
 export default function Footer() {
   const year = new Date().getFullYear()
-  const socials = (org.socials || []).filter((s) => s.href && s.href !== '')
+  // '#' is the data-file placeholder for "profile not set up yet" — hide those.
+  const socials = (org.socials || []).filter((s) => s.href && s.href !== '' && s.href !== '#')
 
   return (
-    <footer className="bg-ink text-cream">
-      <div className="mx-auto max-w-7xl px-6 sm:px-10">
+    <footer className="relative overflow-hidden bg-ink text-cream">
+      <Contours className="text-gold" opacity={0.06} />
+
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-10">
         {/* CTA strip */}
-        <div className="grid gap-6 border-b border-ink-line py-12 md:grid-cols-2 md:items-center md:py-14">
-          <h2 className="max-w-md font-display text-2xl font-extrabold leading-tight sm:text-3xl">
-            Together, we help everyone <span className="text-gold">ascend.</span>
-          </h2>
+        <div className="grid gap-8 border-b border-ink-line py-14 md:grid-cols-[1.2fr_1fr] md:items-center md:py-16">
+          <div>
+            <p className="eyebrow mb-4 text-gold">Join the climb</p>
+            <h2 className="max-w-lg font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl">
+              Together, we help everyone{' '}
+              <span className="relative inline-block text-gold">
+                ascend.
+                <span aria-hidden="true" className="absolute -bottom-1 left-0 h-[0.08em] w-full rounded-full bg-gold/60" />
+              </span>
+            </h2>
+          </div>
           <div className="flex flex-wrap gap-3 md:justify-end">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 font-bold text-ink transition-colors hover:bg-gold/90"
+              className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 font-bold text-ink transition-colors hover:bg-gold/90"
             >
               <Heart className="size-4" aria-hidden="true" /> Donate
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full border border-cream/30 px-6 py-3 font-bold text-cream transition-colors hover:border-cream hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-full border border-cream/30 px-7 py-3.5 font-bold text-cream transition-colors hover:border-cream hover:bg-white/10"
             >
               Get in touch
               <ArrowUpRight className="size-4" aria-hidden="true" />
@@ -62,17 +74,19 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Main */}
-        <div className="grid gap-10 py-14 md:grid-cols-[1.4fr_0.8fr_1.2fr]">
+        {/* Main columns */}
+        <div className="grid gap-12 py-14 md:grid-cols-2 lg:grid-cols-[1.3fr_0.7fr_1fr_1fr]">
           <div>
             <img
               src="/logo.jpg"
               alt={`${org.name} (${org.abbr}) logo`}
-              className="w-36 rounded-2xl bg-white p-3 shadow-lg shadow-black/20"
+              className="w-32 rounded-2xl bg-white p-2.5 shadow-lg shadow-black/20"
             />
-            <p className="mt-5 max-w-sm text-cream/60">{org.tagline}</p>
+            <p className="mt-5 max-w-sm leading-relaxed text-cream/60">{org.tagline}</p>
             <p className="mt-4 text-sm text-cream/45">
-              {org.type} · Reg. No. {org.registration.certificate} · {org.registration.body}
+              {org.type} · Reg. No. {org.registration.certificate}
+              <br />
+              {org.registration.body}
             </p>
 
             {socials.length > 0 && (
@@ -97,16 +111,18 @@ export default function Footer() {
           </div>
 
           <nav aria-label="Footer">
-            <h2 className="eyebrow mb-4 text-cream/50">Explore</h2>
+            <h2 className="eyebrow mb-5 text-cream/50">Explore</h2>
             <ul className="space-y-2.5">
-              <li>
-                <Link to="/" className="text-cream/70 transition-colors hover:text-gold">
-                  Home
-                </Link>
-              </li>
-              {nav.map((item) => (
+              {[{ to: '/', label: 'Home' }, ...nav].map((item) => (
                 <li key={item.to}>
-                  <Link to={item.to} className="text-cream/70 transition-colors hover:text-gold">
+                  <Link
+                    to={item.to}
+                    className="group inline-flex items-center gap-2 text-cream/70 transition-colors hover:text-gold"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="h-px w-0 bg-gold transition-all duration-300 group-hover:w-4"
+                    />
                     {item.label}
                   </Link>
                 </li>
@@ -115,13 +131,10 @@ export default function Footer() {
           </nav>
 
           <div>
-            <h2 className="eyebrow mb-4 text-cream/50">Contact</h2>
-            <ul className="space-y-3 text-cream/70">
+            <h2 className="eyebrow mb-5 text-cream/50">Contact</h2>
+            <ul className="space-y-3.5 text-cream/70">
               <li>
-                <a
-                  href={org.contact.phoneHref}
-                  className="flex items-start gap-2.5 transition-colors hover:text-gold"
-                >
+                <a href={org.contact.phoneHref} className="flex items-start gap-2.5 transition-colors hover:text-gold">
                   <Phone className="mt-0.5 size-4 shrink-0 text-gold" />
                   {org.contact.phone}
                 </a>
@@ -141,6 +154,23 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+
+          <div>
+            <h2 className="eyebrow mb-5 text-cream/50">Accessibility</h2>
+            <p className="text-sm leading-relaxed text-cream/60">
+              This site adapts to you: larger text, high contrast, paused motion and an easy-read
+              font are one tap away — look for the{' '}
+              <PersonStanding className="inline size-4 -translate-y-px text-gold" aria-hidden="true" />{' '}
+              button. Something in the way?{' '}
+              <a
+                href={`mailto:${org.contact.email}`}
+                className="font-semibold text-cream/85 underline decoration-gold/60 underline-offset-4 hover:decoration-gold"
+              >
+                Tell us
+              </a>{' '}
+              — access is our whole mission.
+            </p>
+          </div>
         </div>
 
         {/* Bottom bar */}
@@ -150,12 +180,19 @@ export default function Footer() {
           </p>
           <button
             type="button"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => scrollTo(0)}
             className="inline-flex items-center gap-1.5 font-semibold text-cream/60 transition-colors hover:text-gold"
           >
             Back to top <ArrowUp className="size-4" aria-hidden="true" />
           </button>
         </div>
+      </div>
+
+      {/* Ghost wordmark */}
+      <div aria-hidden="true" className="pointer-events-none relative -mb-4 overflow-hidden sm:-mb-7">
+        <p className="text-ghost whitespace-nowrap text-center font-display text-[13.5vw] font-extrabold leading-[0.78]">
+          ASCEND FOR ALL
+        </p>
       </div>
     </footer>
   )

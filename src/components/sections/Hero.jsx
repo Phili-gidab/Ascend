@@ -1,10 +1,10 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowDown, ArrowUpRight, Heart } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { org, visionMission, heroImage, stats } from '../../data/site'
+import { org, visionMission, heroImage, heroImageWide, stats } from '../../data/site'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import Magnetic from '../ui/Magnetic'
 import Counter from '../ui/Counter'
@@ -13,10 +13,20 @@ gsap.registerPlugin(ScrollTrigger)
 
 const EASE = [0.16, 1, 0.3, 1]
 
+/** The promise, cycled: everyone deserves the chance to … */
+const ROTATING = ['ascend', 'learn', 'earn', 'lead', 'thrive']
+
 export default function Hero() {
   const root = useRef(null)
   const media = useRef(null)
   const reduced = useReducedMotion()
+  const [word, setWord] = useState(0)
+
+  useEffect(() => {
+    if (reduced) return
+    const t = setInterval(() => setWord((w) => (w + 1) % ROTATING.length), 2800)
+    return () => clearInterval(t)
+  }, [reduced])
 
   useLayoutEffect(() => {
     if (reduced) return
@@ -24,10 +34,10 @@ export default function Hero() {
       // Slow Ken-Burns zoom + drift as the hero scrolls away.
       gsap.fromTo(
         media.current,
-        { scale: 1.05, yPercent: 0 },
+        { scale: 1.02, yPercent: 0 },
         {
-          scale: 1.2,
-          yPercent: 8,
+          scale: 1.1,
+          yPercent: 6,
           ease: 'none',
           scrollTrigger: { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true },
         },
@@ -49,13 +59,18 @@ export default function Hero() {
         className="absolute inset-0"
         style={{ background: 'linear-gradient(135deg, var(--color-brand-deep), var(--color-ink))' }}
       />
-      <img
-        ref={media}
-        src={heroImage}
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 size-full origin-center object-cover"
-      />
+      {/* Portrait original on portrait screens; CDN face-aware 16:9 crop on landscape. */}
+      <picture>
+        <source media="(orientation: landscape)" srcSet={heroImageWide} />
+        <img
+          ref={media}
+          src={heroImage}
+          alt=""
+          aria-hidden="true"
+          fetchPriority="high"
+          className="absolute inset-0 size-full origin-center object-cover"
+        />
+      </picture>
 
       {/* Scrims for text legibility */}
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/55 to-ink/40" />
@@ -89,16 +104,34 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: EASE }}
             className="max-w-4xl text-[clamp(2.15rem,6.5vw,6rem)] font-extrabold leading-[1.05] tracking-[-0.02em] text-white sm:leading-[1.02]"
           >
-            Everyone deserves the chance to{' '}
-            <span className="relative inline-block whitespace-nowrap">
-              ascend.
-              <motion.span
-                aria-hidden="true"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.7, delay: 0.55, ease: EASE }}
-                className="absolute -bottom-1 left-0 h-[0.1em] w-full origin-left rounded-full bg-gold"
-              />
+            Everyone deserves the chance to
+            {/* The cycling word always sits alone on its own line, so the
+                headline never re-wraps as words of different widths rotate.
+                Static text for screen readers; the cycle is visual-only. */}
+            <span className="sr-only"> ascend.</span>
+            <span aria-hidden="true" className="relative block h-[1.18em] overflow-hidden">
+              {reduced ? (
+                <span className="relative inline-block text-gold">
+                  ascend.
+                  <span className="absolute bottom-[0.04em] left-0 h-[0.08em] w-full rounded-full bg-gold" />
+                </span>
+              ) : (
+                /* Overlapping slot-machine swap: the outgoing word slides up
+                   and out while the incoming one rises — never an empty line. */
+                <AnimatePresence initial={false}>
+                  <motion.span
+                    key={ROTATING[word]}
+                    initial={{ y: '115%' }}
+                    animate={{ y: '0%' }}
+                    exit={{ y: '-115%' }}
+                    transition={{ duration: 0.55, ease: EASE }}
+                    className="absolute left-0 top-0 inline-block text-gold"
+                  >
+                    {ROTATING[word]}.
+                    <span className="absolute bottom-[0.04em] left-0 h-[0.08em] w-full rounded-full bg-gold" />
+                  </motion.span>
+                </AnimatePresence>
+              )}
             </span>
           </motion.div>
 

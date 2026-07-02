@@ -145,7 +145,47 @@ h4 {
 }
 
 /* =========================================================================
+   Unified photo grade — one subtle warm/navy wash over every photograph so
+   mixed photography reads as a single commissioned set.
+   ========================================================================= */
+.photo-grade img {
+  filter: saturate(0.9) contrast(1.04) sepia(0.05);
+}
+.photo-grade::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(160deg, rgba(28, 78, 134, 0.18), rgba(207, 154, 46, 0.14));
+  mix-blend-mode: soft-light;
+}
+
+/* Coverage-map marker pulse (killed by the reduced-motion blocks below) */
+@keyframes map-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.map-pulse {
+  animation: map-pulse 2.4s ease-in-out infinite;
+}
+
+/* Outlined "ghost" display type (gallery backdrop word) */
+.text-ghost {
+  color: transparent;
+  -webkit-text-stroke: 1.5px color-mix(in oklab, var(--color-cream) 22%, transparent);
+  user-select: none;
+}
+
+/* =========================================================================
    Reduced motion — first-class for a disability-led organisation.
+   Honoured from the OS setting AND from the on-site accessibility toolbar
+   (html.a11y-motion), which mirrors this block exactly.
    ========================================================================= */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -159,4 +199,68 @@ h4 {
   .animate-marquee {
     animation: none !important;
   }
+}
+html.a11y-motion *,
+html.a11y-motion *::before,
+html.a11y-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+html.a11y-motion .animate-marquee {
+  animation: none !important;
+}
+
+/* =========================================================================
+   Accessibility toolbar modes (persisted in localStorage as `afa-a11y`).
+   Tailwind v4 resolves color opacity with color-mix() at runtime, so
+   overriding the tokens here propagates everywhere.
+   ========================================================================= */
+
+/* Text size — rem-based type scales with the root font size. */
+html.a11y-text-lg {
+  font-size: 112.5%;
+}
+html.a11y-text-xl {
+  font-size: 125%;
+}
+
+/* High contrast — solidify washed-out text, strengthen dividers. */
+html.a11y-contrast {
+  --color-line: #a99e77;
+  --color-muted: #3d3a33;
+}
+html.a11y-contrast [class*='text-ink/'] {
+  color: var(--color-ink) !important;
+}
+html.a11y-contrast [class*='text-cream/'] {
+  color: var(--color-cream) !important;
+}
+html.a11y-contrast [class*='text-white/'] {
+  color: #fff !important;
+}
+html.a11y-contrast .photo-grade::after {
+  display: none;
+}
+html.a11y-contrast .photo-grade img {
+  filter: none;
+}
+
+/* Easy-read font — Atkinson Hyperlegible (Braille Institute), looser rhythm. */
+html.a11y-font {
+  --font-sans: 'Atkinson Hyperlegible', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Atkinson Hyperlegible', ui-sans-serif, system-ui, sans-serif;
+}
+html.a11y-font body {
+  letter-spacing: 0.01em;
+  line-height: 1.75;
+}
+html.a11y-font h1,
+html.a11y-font h2,
+html.a11y-font h3,
+html.a11y-font h4 {
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.15;
 }

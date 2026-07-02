@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0E0D0F" />
+    <meta name="theme-color" content="#11243d" />
     <meta
       name="description"
       content="ASCEND FOR ALL (AFA) is a national, disability-led NGO in Ethiopia removing economic and educational barriers for persons with disabilities through inclusion, empowerment and advocacy."
     />
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Twitter -->
     <meta property="og:title" content="ASCEND FOR ALL — Disability-led inclusion, empowerment & advocacy" />
     <meta
       property="og:description"
@@ -18,13 +18,57 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_ET" />
+    <!-- A branded share card is ready at /og.jpg — social scrapers require an
+         ABSOLUTE url, so once the domain is live replace the content below with
+         e.g. https://ascendforall.org/og.jpg -->
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1747214300383-81342dfa5f8e?auto=format&fit=crop&crop=faces&w=1200&h=630&q=80"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Structured data: NGO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "NGO",
+        "name": "ASCEND FOR ALL",
+        "alternateName": "AFA",
+        "description": "National, disability-led NGO in Ethiopia removing economic and educational barriers for persons with disabilities.",
+        "email": "ascendforall24@gmail.com",
+        "telephone": "+251914125845",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Arat Kilo",
+          "addressLocality": "Addis Ababa",
+          "addressCountry": "ET"
+        },
+        "areaServed": ["Tigray", "Amhara", "Addis Ababa", "Dire Dawa", "Oromia"]
+      }
+    </script>
+
+    <!-- Photos are served from the Unsplash CDN — warm the connection early. -->
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Apply saved accessibility preferences before first paint (prevents flashes). -->
+    <script>
+      try {
+        var s = JSON.parse(localStorage.getItem('afa-a11y') || '{}')
+        var c = document.documentElement.classList
+        if (s.text === 'lg') c.add('a11y-text-lg')
+        if (s.text === 'xl') c.add('a11y-text-xl')
+        if (s.contrast) c.add('a11y-contrast')
+        if (s.motion) c.add('a11y-motion')
+        if (s.font) c.add('a11y-font')
+      } catch (e) {}
+    </script>
 
     <title>ASCEND FOR ALL (AFA) — Disability-led inclusion in Ethiopia</title>
   </head>

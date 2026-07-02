@@ -6,6 +6,28 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 /**
+ * The live Lenis instance (null when smoothing is off, e.g. reduced motion).
+ * Programmatic scrolls MUST go through this when it exists — a plain
+ * `window.scrollTo` gets overwritten on the next frame by Lenis's own lerp.
+ */
+let activeLenis = null
+export const getLenis = () => activeLenis
+
+/** Lenis-aware scroll helper: jumps (or glides) reliably in both modes. */
+export function scrollTo(target, { immediate = false, offset = 0 } = {}) {
+  if (activeLenis) {
+    activeLenis.scrollTo(target, { immediate, offset, force: true })
+    return
+  }
+  if (typeof target === 'number') {
+    window.scrollTo({ top: target, behavior: immediate ? 'auto' : 'smooth' })
+  } else if (target instanceof Element) {
+    const top = target.getBoundingClientRect().top + window.scrollY + offset
+    window.scrollTo({ top, behavior: immediate ? 'auto' : 'smooth' })
+  }
+}
+
+/**
  * Initialises Lenis smooth scrolling and drives it from GSAP's ticker so that
  * ScrollTrigger and Lenis stay perfectly in sync.
  *
@@ -28,6 +50,7 @@ export function useLenis(enabled = true) {
       // Smoothly handle in-page #anchor links; offset clears the fixed navbar.
       anchors: { offset: -96 },
     })
+    activeLenis = lenis
 
     lenis.on('scroll', ScrollTrigger.update)
 
@@ -43,6 +66,7 @@ export function useLenis(enabled = true) {
     return () => {
       gsap.ticker.remove(onTick)
       lenis.destroy()
+      if (activeLenis === lenis) activeLenis = null
       window.removeEventListener('load', refresh)
       clearTimeout(t)
     }

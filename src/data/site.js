@@ -17,10 +17,10 @@ const img = (id, w = 1400) =>
 export const heroImage = img('1747214300383-81342dfa5f8e', 1080)
 export const heroImageWide =
   'https://images.unsplash.com/photo-1747214300383-81342dfa5f8e?auto=format&fit=crop&crop=faces&w=1920&h=1080&q=80'
-// About — school-opening celebration with drums, Ethiopia (community, portrait 4:5)
-export const aboutImage = img('1505147634308-9b83c4cb46b4', 1200)
-// About collage inset — smiling Ethiopian girl in traditional dress
-export const aboutImageSecondary = img('1764145177622-8317fbfe1877', 480)
+// About — AFA photo: an elder in a traditional shawl beside a young woman (4:5 crop, left-biased)
+export const aboutImage = '/images/portrait-mother-daughter.jpg'
+// About collage inset — AFA photo: a woman in her wheelchair, guided through the city
+export const aboutImageSecondary = '/images/wheelchair-street.jpg'
 // Band — children running down the street after school in Ale, Ethiopia
 export const bandImage = img('1588349482083-036b31c6eca3', 1920)
 // Donate — Ethiopian graduate in cap & gown embraced by elders in traditional netela
@@ -199,7 +199,7 @@ export const focus = {
     },
     {
       title: 'Targeted Support for Marginalised Sub-groups',
-      desc: 'Specialised interventions for women, girls, and children with disabilities facing double marginalisation and heightened GBV risk.',
+      desc: 'Specialised interventions for women, young girls, and children with disabilities facing double marginalisation (gender and disability) and heightened GBV risk.',
     },
     {
       title: 'Inclusive Infrastructural Advocacy',
@@ -214,10 +214,10 @@ export const focus = {
 
 export const goals = [
   'Ensure the economic benefit, financial independence, and professional competence of persons with disabilities.',
-  'Minimise school dropout rates through tailored financial and material frameworks for children with disabilities.',
-  'Facilitate equitable employment, career pathways, and inclusive workplace adaptations.',
-  'Lobby and advocate for disability rights and economic benefits in government policies, guidelines, and laws.',
-  'Foster community, corporate, and institutional awareness of the potential of persons with disabilities.',
+  'Minimise school dropout rates by providing tailored financial and material frameworks that overcome learning obstacles for children with disabilities.',
+  'Facilitate equitable employment opportunities, career pathways, and inclusive workplace adaptations for those facing structural barriers in the job market.',
+  'Lobby and advocate for the systematic inclusion of disability rights and economic benefits in government policies, guidelines, and laws.',
+  'Foster deep community, corporate, and institutional awareness of the immense economic and social potential of persons with disabilities.',
 ]
 
 /**
@@ -238,8 +238,10 @@ export const programs = [
     icon: 'education',
     desc: 'Inclusive, accessible learning — reducing dropout, adapting infrastructure, and supplying Braille and sign-language materials.',
     points: ['Education in Emergencies', 'Accessible schools', 'Braille & sign-language tools'],
-    // Joyful classroom in East Africa — child flashing a peace sign
-    image: img('1620969910995-4bbe4eaa32c1'),
+    // AFA photo: three young people with visual impairments together at a table
+    image: '/images/students-at-table.jpg',
+    // keep faces in frame when the card crops to 16:10
+    imagePos: '50% 18%',
   },
   {
     title: 'Protection',
@@ -305,6 +307,12 @@ export const gallery = [
     desc: 'Girls in traditional dress dance through the streets during the Ashenda festival.',
   },
   {
+    image: '/images/wheelchair-street.jpg',
+    title: 'Side by side',
+    place: 'Ethiopia',
+    desc: 'A caregiver and a woman in her wheelchair move through the city together.',
+  },
+  {
     image: img('1740572497450-4f4f2d3be984', 1200),
     title: 'Teammates',
     place: 'Wheelchair basketball',
@@ -322,6 +330,12 @@ export const gallery = [
     title: 'Full speed',
     place: 'Ale, Ethiopia',
     desc: 'A boy races his wheel down the village road — a game played the world over.',
+  },
+  {
+    image: '/images/students-at-table.jpg',
+    title: 'Together at the table',
+    place: 'Ethiopia',
+    desc: 'Three young people with visual impairments share a bench and a moment.',
   },
   {
     image: img('1633539656332-d0861676473a', 1200),
@@ -355,6 +369,12 @@ export const gallery = [
     title: 'The long road',
     place: "Weyt'o Valley",
     desc: 'Two friends head home through the southern lowlands.',
+  },
+  {
+    image: '/images/portrait-mother-daughter.jpg',
+    title: 'Generations',
+    place: 'Ethiopia',
+    desc: 'A quiet strength passed between generations.',
   },
   {
     image: img('1782283034357-47f4185af8f8', 1200),
@@ -399,14 +419,14 @@ export const donate = {
 }
 
 export const objectives = [
-  'Conduct systemic advocacy, institutional capacity building, and skills training on disability inclusion.',
-  'Enhance income-generating opportunities (IGAs), vocational training, and entrepreneurship for youth with disabilities.',
-  'Ensure equal participation of children and youth with disabilities in rehabilitation, community life, and peacebuilding.',
-  'Prevent and alleviate gender-based violence against children, women, and girls with disabilities.',
-  'Improve school infrastructure for accessibility and implement inclusive teaching methodologies.',
-  'Provide psychosocial rehabilitation: trauma healing, mindfulness, counseling, and stress management.',
-  'Deliver capacity-building on disability inclusion, SRHR, and trauma-informed care for service providers.',
-  'Deliver leadership, communication, and life-skills training tailored for individuals with disabilities.',
-  'Address maternal & child health, WASH, and disease prevention with disability-friendly facilities.',
-  'Foster a conducive, accessible, and nurturing learning environment for children and youth with disabilities.',
+  'Conduct systemic advocacy, institutional capacity building, and targeted skills training on disability inclusion.',
+  'Enhance sustainable income-generating opportunities (IGAs), specialized vocational training, and entrepreneurship development for youth with disabilities.',
+  'Ensure the equal participation and explicit inclusion of children and youth with disabilities in rehabilitation programs, community life, and local peacebuilding.',
+  'Prevent and alleviate gender-based violence against children, women, and girls with disabilities — in both development and emergency contexts.',
+  'Improve school infrastructure for physical accessibility and implement innovative, inclusive teaching methodologies.',
+  'Provide robust psychosocial rehabilitation: trauma healing, mindfulness, individual and group counseling, and stress management.',
+  'Deliver capacity-building on disability inclusion, SRHR, and trauma-informed care for community leaders and service providers.',
+  'Deliver leadership, advanced communication, and practical life-skills training tailored for individuals with disabilities.',
+  'Address maternal & child health, safe drinking water, sanitation and hygiene (WASH), and disease prevention — with every facility disability-friendly.',
+  'Foster a highly conducive, accessible, and nurturing learning environment for children and youth with disabilities.',
 ]

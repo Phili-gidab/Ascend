@@ -44,6 +44,7 @@ export default function Programs() {
                   label={`${p.title} — photo coming soon`}
                   ratio="aspect-[16/10]"
                   rounded="rounded-none"
+                  position={p.imagePos}
                   parallax
                 />
                 {/* sector index on the photo */}

@@ -21,6 +21,7 @@ const srcSetFor = (src) => {
  * @param {string} label  placeholder text shown when no image is present
  * @param {string} ratio  aspect-ratio utility class (e.g. 'aspect-[4/3]')
  * @param {string} sizes  responsive `sizes` hint for CDN images
+ * @param {string} position  CSS object-position to bias the crop (e.g. '50% 20%')
  */
 export default function ImageSlot({
   src,
@@ -30,6 +31,7 @@ export default function ImageSlot({
   rounded = 'rounded-3xl',
   className = '',
   sizes = '(min-width: 1024px) 50vw, 100vw',
+  position,
   parallax = false,
 }) {
   const [failed, setFailed] = useState(false)
@@ -52,6 +54,7 @@ export default function ImageSlot({
           loading="lazy"
           onError={() => setFailed(true)}
           className={imgClass}
+          style={position ? { objectPosition: position } : undefined}
           {...(parallax ? { 'data-parallax': '', 'data-speed': '12' } : {})}
         />
       ) : (

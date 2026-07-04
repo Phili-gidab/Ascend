@@ -21,10 +21,10 @@ export const heroImageWide =
 export const aboutImage = '/images/portrait-mother-daughter.jpg'
 // About collage inset — AFA photo: a woman in her wheelchair, guided through the city
 export const aboutImageSecondary = '/images/wheelchair-street.jpg'
-// Band — children running down the street after school in Ale, Ethiopia
-export const bandImage = img('1588349482083-036b31c6eca3', 1920)
-// Donate — Ethiopian graduate in cap & gown embraced by elders in traditional netela
-export const donateImage = img('1640117792676-595d18b594dc', 1920)
+// Band — AFA photo: the launch workshop hall, community and wheelchair users gathered
+export const bandImage = '/images/workshop-hall.jpg'
+// Donate — AFA photo: community members with crutches and canes at the launch workshop
+export const donateImage = '/images/workshop-community.jpg'
 
 export const org = {
   name: 'ASCEND FOR ALL',
@@ -230,8 +230,9 @@ export const programs = [
     icon: 'health',
     desc: 'Maternal & child health, WASH, MHPSS, and disease prevention — with every facility made disability-friendly and accessible.',
     points: ['Maternal & child health', 'WASH & hygiene promotion', 'Psychosocial support (MHPSS)'],
-    // African nurse consulting a young girl at a clinic (maternal & child health)
-    image: img('1536064479547-7ee40b74b807'),
+    // AFA photo: optometrist examines a young boy at an eye-care outreach clinic
+    image: '/images/eye-exam-boy.jpg',
+    imagePos: '50% 32%',
   },
   {
     title: 'Education',
@@ -248,16 +249,18 @@ export const programs = [
     icon: 'protection',
     desc: 'Preventing and responding to GBV against women, girls and children with disabilities, with safeguarding and trauma-informed care.',
     points: ['GBV prevention & response', 'Safeguarding', 'Trauma healing & counseling'],
-    // Ethiopian women in traditional white netela with a young girl (family, care)
-    image: img('1640117792694-97b464c05f66'),
+    // AFA photo: a mother with her white cane and her young daughter
+    image: '/images/mother-daughter-cane.jpg',
+    imagePos: '50% 28%',
   },
   {
     title: 'Economic Empowerment',
     icon: 'economic',
     desc: 'Pathways to independence: income-generating activities, vocational training, entrepreneurship, and inclusive employment.',
     points: ['Income-generating activities', 'Vocational & life skills', 'Inclusive employment'],
-    // African tailor at work in his own shop (livelihoods, entrepreneurship)
-    image: img('1687422808289-e721259c9eb4'),
+    // AFA photo: skills-and-leadership session at the launch workshop
+    image: '/images/speaker-training.jpg',
+    imagePos: '50% 40%',
   },
 ]
 
@@ -272,39 +275,48 @@ export const testimonials = [
       'With assistive devices and a small business grant, I now run my own tailoring shop and support my family.',
     name: 'Illustrative story',
     role: 'Entrepreneur · Tigray',
-    // Tailor working at a sewing machine in his shop
-    image: img('1744808336885-c6b2425c3f1e'),
+    // AFA photo: a brand-new wheelchair ready for delivery
+    image: '/images/wheelchair-delivery.jpg',
+    imagePos: '50% 55%',
   },
   {
     quote:
       'My daughter went back to school once the classroom was made accessible and her teachers were trained.',
     name: 'Illustrative story',
     role: 'Parent · Amhara',
-    // Smiling woman wearing a headscarf
-    image: img('1743871698163-a2e470d8eac7'),
+    // AFA photo: a mother holds her child close on a clinic bench
+    image: '/images/mother-son-bench.jpg',
+    imagePos: '50% 35%',
   },
   {
     quote:
       'The counseling and peer support helped me rebuild my confidence and speak up for my rights.',
     name: 'Illustrative story',
     role: 'Youth advocate · Addis Ababa',
-    // Joyful young man living with cerebral palsy, photographed at home
-    image: img('1752057932466-8b78fd0e808e'),
+    // AFA photo: a young blind advocate addresses the launch workshop
+    image: '/images/speaker-portrait.jpg',
+    imagePos: '42% 30%',
   },
 ]
 
 /**
- * Gallery — verified, license-free photography (Unsplash) of Ethiopian life
- * and disability inclusion. `tall` marks portrait frames in the filmstrip.
- * Replace freely with AFA's own consented photos as they become available.
+ * Gallery — AFA's own photography: the launch workshop, eye-care outreach and
+ * assistive-device work. `tall` marks portrait frames in the filmstrip.
+ * Add new photos to /public/images and list them here.
  */
 export const gallery = [
   {
-    image: img('1764145144753-922ae256714b', 1200),
+    image: '/images/workshop-launch.jpg',
+    title: 'The launch',
+    place: 'Launch workshop',
+    desc: 'AFA presents its mission to officials and community members at the launching workshop.',
+  },
+  {
+    image: '/images/eye-exam-boy.jpg',
     tall: true,
-    title: 'Ashenda in full colour',
-    place: 'Tigray',
-    desc: 'Girls in traditional dress dance through the streets during the Ashenda festival.',
+    title: 'Sight, restored',
+    place: 'Eye-care outreach',
+    desc: 'An optometrist examines a young boy — the first step to restoring his sight.',
   },
   {
     image: '/images/wheelchair-street.jpg',
@@ -313,23 +325,24 @@ export const gallery = [
     desc: 'A caregiver and a woman in her wheelchair move through the city together.',
   },
   {
-    image: img('1740572497450-4f4f2d3be984', 1200),
-    title: 'Teammates',
-    place: 'Wheelchair basketball',
-    desc: 'Players ready their chairs together before a game — sport as independence.',
-  },
-  {
-    image: img('1626598442658-ea6a1a5943df', 1200),
+    image: '/images/mother-daughter-cane.jpg',
     tall: true,
-    title: 'The guiding line',
-    place: 'Piazza, Addis Ababa',
-    desc: 'Tactile paving threads through the city, guiding pedestrians with visual impairments.',
+    title: "A mother's strength",
+    place: 'Eye-care outreach',
+    desc: 'A mother with her white cane keeps her daughter close.',
   },
   {
-    image: img('1588349242964-28b720afcb36', 1200),
-    title: 'Full speed',
-    place: 'Ale, Ethiopia',
-    desc: 'A boy races his wheel down the village road — a game played the world over.',
+    image: '/images/workshop-audience.jpg',
+    title: 'Every voice counts',
+    place: 'Launch workshop',
+    desc: 'Community members with disabilities take part in the launching workshop.',
+  },
+  {
+    image: '/images/girl-eye-clinic.jpg',
+    tall: true,
+    title: 'Little patient, big day',
+    place: 'Eye-care outreach',
+    desc: 'A young girl with her medicine after an eye examination.',
   },
   {
     image: '/images/students-at-table.jpg',
@@ -338,37 +351,24 @@ export const gallery = [
     desc: 'Three young people with visual impairments share a bench and a moment.',
   },
   {
-    image: img('1633539656332-d0861676473a', 1200),
+    image: '/images/assistive-wheelchair.jpg',
     tall: true,
-    title: 'Unstoppable joy',
-    place: 'Ethiopia',
-    desc: 'A laugh that needs no caption.',
+    title: 'Ready to roll',
+    place: 'Assistive devices',
+    desc: 'A wheelchair prepared for its new owner — mobility is independence.',
   },
   {
-    image: img('1778086017952-063be172d3a8', 1200),
-    title: 'Pilgrims',
-    place: 'Lalibela',
-    desc: 'Pilgrims gather among the rock-hewn churches of Lalibela.',
+    image: '/images/workshop-community.jpg',
+    title: 'The community gathers',
+    place: 'Launch workshop',
+    desc: 'Elders, advocates and community members side by side.',
   },
   {
-    image: img('1598122666068-59b41e0a3193', 1200),
+    image: '/images/boy-eye-clinic.jpg',
     tall: true,
-    title: 'Heritage worn proudly',
-    place: 'Tigray',
-    desc: 'Traditional dress at the Ashenda celebration.',
-  },
-  {
-    image: img('1647316703389-e114712500e5', 1200),
-    title: 'Addis after dark',
-    place: 'Addis Ababa',
-    desc: 'The capital at night — a city of four million stories.',
-  },
-  {
-    image: img('1588349500046-854848044870', 1200),
-    tall: true,
-    title: 'The long road',
-    place: "Weyt'o Valley",
-    desc: 'Two friends head home through the southern lowlands.',
+    title: 'Standing tall',
+    place: 'Eye-care outreach',
+    desc: 'A young visitor at the eye-care clinic.',
   },
   {
     image: '/images/portrait-mother-daughter.jpg',
@@ -377,23 +377,11 @@ export const gallery = [
     desc: 'A quiet strength passed between generations.',
   },
   {
-    image: img('1782283034357-47f4185af8f8', 1200),
-    title: 'Quiet faith',
-    place: 'Lalibela',
-    desc: 'A moment of stillness beside centuries-old stone.',
-  },
-  {
-    image: img('1764145177622-8317fbfe1877', 1200),
+    image: '/images/mother-son-clinic.jpg',
     tall: true,
-    title: 'A bright future',
-    place: 'Ethiopia',
-    desc: 'Every child deserves the chance to ascend.',
-  },
-  {
-    image: img('1741940365437-e55b919a89d3', 1200),
-    title: 'Mother and child',
-    place: 'East Africa',
-    desc: 'Care is where every ascent begins.',
+    title: 'Waiting together',
+    place: 'Eye-care outreach',
+    desc: 'A mother and son at the clinic — no one ascends alone.',
   },
 ]
 

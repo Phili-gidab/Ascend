@@ -21,8 +21,8 @@ export const posts = [
     category: 'Announcements',
     date: '2026-02-10',
     author: 'AFA Communications',
-    image: img('1640117792676-595d18b594dc'),
-    imageAlt: 'A graduate in cap and gown embraced by elders in traditional Ethiopian netela',
+    image: '/images/workshop-banner.jpg',
+    imageAlt: "AFA's launching workshop: speakers present beneath the ASCEND FOR ALL banner",
     excerpt:
       'On January 28, 2026, ASCEND FOR ALL received its certificate of registration from the Authority for Civil Society Organizations. Here is what that means — and what comes next.',
     body: `On January 28, 2026, ASCEND FOR ALL (AFA) was officially registered as a national non-governmental organization under Ethiopia's Civil Society Organizations Proclamation — certificate No. 7818, issued by the Authority for Civil Society Organizations (ACSO).
@@ -54,8 +54,8 @@ Registration is the starting line, not the finish. In the months ahead we are bu
     category: 'Programs',
     date: '2026-03-18',
     author: 'AFA Team',
-    image: img('1536064479547-7ee40b74b807'),
-    imageAlt: 'An African nurse consults a young girl at a clinic desk',
+    image: '/images/eye-exam-girl.jpg',
+    imageAlt: 'An optometrist examines a young girl at an AFA eye-care outreach clinic',
     excerpt:
       'Disability is never just a health issue, or just an education issue. Our four program sectors are designed as one system — because barriers never come one at a time.',
     body: `Ask anyone living with a disability in Ethiopia what stands between them and the life they want, and you will rarely hear a single answer. A child who cannot reach the clinic also misses school. A woman denied rehabilitation is also denied work. Barriers arrive together — so responses must, too.
@@ -88,8 +88,8 @@ A single family may need all four at once — and should not have to knock on fo
     category: 'Perspectives',
     date: '2026-05-06',
     author: 'AFA Team',
-    image: img('1740572497450-4f4f2d3be984'),
-    imageAlt: 'Wheelchair basketball players readying their chairs together before a game',
+    image: '/images/speaker-signing.jpg',
+    imageAlt: 'A blind advocate addresses the audience at the AFA launching workshop',
     excerpt:
       'Plenty of organizations work for persons with disabilities. Far fewer are led by them. The difference shows up in every decision an organization makes.',
     body: `Plenty of organizations work *for* persons with disabilities. Far fewer are *led by* them. AFA was founded to be the second kind — and the difference is not cosmetic.

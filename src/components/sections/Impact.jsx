@@ -34,6 +34,7 @@ export default function Impact() {
               label="Portrait coming soon"
               ratio="aspect-[4/3]"
               rounded="rounded-none"
+              position={t.imagePos}
               parallax
             />
             <blockquote className="flex flex-1 flex-col p-6 sm:p-7">

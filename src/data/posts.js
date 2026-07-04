@@ -88,8 +88,8 @@ A single family may need all four at once — and should not have to knock on fo
     category: 'Perspectives',
     date: '2026-05-06',
     author: 'AFA Team',
-    image: '/images/speaker-signing.jpg',
-    imageAlt: 'A blind advocate addresses the audience at the AFA launching workshop',
+    image: '/images/workshop-launch.jpg',
+    imageAlt: 'AFA presents to officials and community members at its launching workshop',
     excerpt:
       'Plenty of organizations work for persons with disabilities. Far fewer are led by them. The difference shows up in every decision an organization makes.',
     body: `Plenty of organizations work *for* persons with disabilities. Far fewer are *led by* them. AFA was founded to be the second kind — and the difference is not cosmetic.

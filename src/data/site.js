@@ -17,10 +17,10 @@ const img = (id, w = 1400) =>
 export const heroImage = img('1747214300383-81342dfa5f8e', 1080)
 export const heroImageWide =
   'https://images.unsplash.com/photo-1747214300383-81342dfa5f8e?auto=format&fit=crop&crop=faces&w=1920&h=1080&q=80'
-// About — AFA photo: an elder in a traditional shawl beside a young woman (4:5 crop, left-biased)
-export const aboutImage = '/images/portrait-mother-daughter.jpg'
-// About collage inset — AFA photo: a woman in her wheelchair, guided through the city
-export const aboutImageSecondary = '/images/wheelchair-street.jpg'
+// About — AFA photo: a blind advocate addresses the launch workshop beneath the AFA banner
+export const aboutImage = '/images/speaker-portrait.jpg'
+// About collage inset — AFA photo: a mother and son at the eye-care clinic
+export const aboutImageSecondary = '/images/mother-son-clinic.jpg'
 // Band — AFA photo: the launch workshop hall, community and wheelchair users gathered
 export const bandImage = '/images/workshop-hall.jpg'
 // Donate — AFA photo: community members with crutches and canes at the launch workshop
@@ -293,9 +293,9 @@ export const testimonials = [
       'The counseling and peer support helped me rebuild my confidence and speak up for my rights.',
     name: 'Illustrative story',
     role: 'Youth advocate · Addis Ababa',
-    // AFA photo: a young blind advocate addresses the launch workshop
-    image: '/images/speaker-portrait.jpg',
-    imagePos: '42% 30%',
+    // AFA photo: a young blind advocate speaking at the launch workshop
+    image: '/images/speaker-signing.jpg',
+    imagePos: '45% 30%',
   },
 ]
 

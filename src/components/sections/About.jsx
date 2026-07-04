@@ -25,20 +25,22 @@ export default function About() {
           />
           <ImageSlot
             src={aboutImage}
-            alt="An elder woman in a traditional shawl beside a young woman — two generations of the community AFA serves"
+            alt="A blind advocate addresses AFA's launching workshop beneath the ASCEND FOR ALL banner"
             label="Community photo coming soon"
             ratio="aspect-[4/5]"
             rounded="rounded-t-[4.5rem] rounded-b-3xl sm:rounded-t-[7rem] lg:rounded-t-[9rem]"
-            className="relative border border-line shadow-xl shadow-ink/5 [&_img]:object-[30%_50%]"
+            position="42% 45%"
+            className="relative border border-line shadow-xl shadow-ink/5"
           />
           {/* overlapping secondary photo */}
           <div className="absolute -bottom-0 left-0 w-36 rotate-[-3deg] sm:w-44">
             <ImageSlot
               src={aboutImageSecondary}
-              alt="A woman in her wheelchair, guided by a caregiver along a city street"
+              alt="A mother in an orange shawl with her son at the eye-care clinic"
               ratio="aspect-[3/4]"
               rounded="rounded-2xl"
-              className="border-4 border-sand shadow-lg shadow-ink/15 [&_img]:object-[55%_50%]"
+              position="50% 35%"
+              className="border-4 border-sand shadow-lg shadow-ink/15"
               sizes="11rem"
             />
           </div>

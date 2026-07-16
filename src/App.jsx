@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage'
 const AboutPage = lazy(() => import('./pages/AboutPage'))
 const ProgramsPage = lazy(() => import('./pages/ProgramsPage'))
 const ImpactPage = lazy(() => import('./pages/ImpactPage'))
+const DonorsPage = lazy(() => import('./pages/DonorsPage'))
 const GalleryPage = lazy(() => import('./pages/GalleryPage'))
 const BlogPage = lazy(() => import('./pages/BlogPage'))
 const PostPage = lazy(() => import('./pages/PostPage'))
@@ -47,6 +48,14 @@ export default function App() {
           element={
             <Suspense fallback={<PageLoader />}>
               <ImpactPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="donors"
+          element={
+            <Suspense fallback={<PageLoader />}>
+              <DonorsPage />
             </Suspense>
           }
         />

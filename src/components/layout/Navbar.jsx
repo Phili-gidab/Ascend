@@ -52,7 +52,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop links */}
-        <ul className="hidden items-center gap-1 md:flex">
+        <ul className="hidden items-center gap-1 lg:flex">
           {nav.map((item) => (
             <li key={item.to}>
               <NavLink
@@ -84,7 +84,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className={`grid size-11 place-items-center rounded-full border transition-colors md:hidden ${
+          className={`grid size-11 place-items-center rounded-full border transition-colors lg:hidden ${
             solid ? 'border-line text-ink' : 'border-white/40 text-white'
           }`}
           aria-expanded={open}
@@ -103,7 +103,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden border-t border-line bg-paper/95 backdrop-blur-xl md:hidden"
+            className="overflow-hidden border-t border-line bg-paper/95 backdrop-blur-xl lg:hidden"
           >
             <ul className="flex flex-col gap-1 px-6 py-6">
               {nav.map((item) => (

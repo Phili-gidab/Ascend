@@ -60,6 +60,7 @@ export const nav = [
   { to: '/about', label: 'About' },
   { to: '/programs', label: 'Programs' },
   { to: '/impact', label: 'Impact' },
+  { to: '/donors', label: 'Donors' },
   { to: '/gallery', label: 'Gallery' },
   { to: '/blog', label: 'Blog' },
   { to: '/contact', label: 'Contact' },
@@ -404,6 +405,79 @@ export const donate = {
    *   { method: 'PayPal', detail: 'paypal.me/ascendforall', href: 'https://paypal.me/ascendforall' },
    */
   methods: [],
+}
+
+/**
+ * Donor impact report. `chapters[].body` and `closing.body` use the same
+ * constrained markdown dialect as blog posts (see src/components/ui/Markdown.jsx):
+ * paragraphs, `- ` lists, **bold**, *italic*, `> ` quotes.
+ *
+ * NOTE: the photos below are EXISTING AFA images used as placeholders — swap
+ * each `cover` / `image` path (and its alt text) for context-specific
+ * photography of this donor-funded work when it is available.
+ */
+export const donorStory = {
+  eyebrow: 'Donors & impact',
+  title: 'Empowering Lives, Restoring Hope',
+  subtitle: 'The ASCEND FOR ALL journey',
+  funder: 'Lars Ericson Charitable Foundation',
+  lead: 'Since our inception four months ago, ASCEND FOR ALL has been driven by a singular mission: to restore sight, provide mobility, and nurture the human spirit. With the generous support of the Lars Ericson Charitable Foundation, we have embarked on a journey of profound impact — turning challenges into hope for countless Ethiopians.',
+  cover: '/images/eye-exam-girl.jpg',
+  coverAlt: 'An optometrist examines a young girl at an AFA pediatric eye-care outreach clinic',
+  highlights: [
+    { value: '200+', label: "Children's sight restored" },
+    { value: '120', label: 'Students supported in Mekelle' },
+    { value: '20', label: 'Wheelchairs gifted' },
+    { value: '5', label: 'Cities reached across Tigray' },
+  ],
+  chapters: [
+    {
+      heading: 'Restoring vision, igniting potential',
+      image: '/images/girl-eye-clinic.jpg',
+      imageAlt: 'A young girl with her medicine after an eye examination at an AFA clinic',
+      body: `Our commitment to pediatric eye care has transformed the lives of **over 200 children** across Axum, Adwa, Shire, and Alamata.
+
+- **Comprehensive care** — we covered every cost, including transportation and medical treatment, ensuring no child was left behind.
+- **Expert treatment** — from life-changing surgeries performed by specialists in accredited government hospitals to high-quality eyeglasses, we helped children return to their studies with confidence.
+- **Community impact** — these efforts were honored with coverage by major media outlets, including Tigray TV and Dimtsi Weyane Tigray, underscoring the vital importance of this initiative.`,
+    },
+    {
+      heading: 'Equipping for excellence',
+      image: '/images/eye-exam-boy.jpg',
+      imageAlt: 'An eye specialist examines a young boy using diagnostic equipment at an outreach clinic',
+      body: `We are proud to have donated a critical **Retinoscope** to the Shire General Hospital.
+
+- This essential diagnostic tool eliminates the need for patients to travel long distances for care — saving families time, energy, and unnecessary expense.
+- We were deeply honored to receive formal recognition and awards from the hospital and local officials for this contribution to public health.`,
+    },
+    {
+      heading: 'Fostering empowerment and independence',
+      image: '/images/wheelchair-delivery.jpg',
+      imageAlt: 'A brand-new wheelchair prepared for delivery to its new owner',
+      body: `Our work extends beyond medical care to the fundamental needs of our community.
+
+- **Academic support** — we provided 10,000 ETB to each of the 120 visually impaired students in Mekelle, offering them resources and the morale to pursue their dreams. We are humbled by the recognition received from the Tigray Blind Association.
+- **Restoring mobility** — we gifted 20 wheelchairs to children and individuals in need, allowing them to step outside, connect with their community, and embrace the sunlight and fresh air they deserve.
+- **Trauma healing** — we conducted "Trauma Healing Post-War" training in Axum, Adwa, Shire, and Mekelle, helping people build resilience and reclaim their mental well-being through expert-led sessions.
+- **Nurturing futures** — in Axum, we provided three months of rent, nutritious food supplies, and essential learning tools (including a piano) to the Medregenet Autism Center, ensuring a brighter environment for children in need.`,
+    },
+  ],
+  gallery: [
+    { image: '/images/students-at-table.jpg', alt: 'Three young people with visual impairments together at a table' },
+    { image: '/images/assistive-wheelchair.jpg', alt: 'A wheelchair prepared for its new owner' },
+    { image: '/images/wheelchair-street.jpg', alt: 'A caregiver and a woman in her wheelchair move through the city together' },
+    { image: '/images/speaker-training.jpg', alt: 'A skills-and-leadership training session led at an AFA gathering' },
+    { image: '/images/boy-eye-clinic.jpg', alt: 'A young visitor at the eye-care clinic' },
+    { image: '/images/workshop-community.jpg', alt: 'Elders, advocates and community members gathered together' },
+  ],
+  closing: {
+    heading: 'A heartfelt thank you',
+    image: '/images/portrait-mother-daughter.jpg',
+    imageAlt: 'A mother and daughter — a quiet strength passed between generations',
+    body: `In less than five months, these milestones have become our proudest legacy. We extend our deepest gratitude to the **Lars Ericson Charitable Foundation** for being the backbone of this transformation. Your belief in our vision has touched lives, healed hearts, and planted seeds of hope that will grow for generations to come.
+
+> Together, we are not just providing aid — we are building a more inclusive and resilient future for all.`,
+  },
 }
 
 export const objectives = [

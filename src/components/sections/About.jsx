@@ -2,7 +2,6 @@ import { motion } from 'framer-motion'
 import Section from '../ui/Section'
 import Reveal from '../ui/Reveal'
 import ImageSlot from '../ui/ImageSlot'
-import Marquee from '../ui/Marquee'
 import { background, org, aboutImage, aboutImageSecondary } from '../../data/site'
 import { stagger, fadeUp, viewportOnce } from '../../lib/motion'
 
@@ -99,13 +98,6 @@ export default function About() {
           </div>
         </div>
       </div>
-
-      {/* Partner experience — ticker with an accessible text fallback */}
-      <Reveal className="mt-16 border-t border-line pt-10 sm:mt-20">
-        <p className="eyebrow mb-7 text-ink/45">Expertise forged across leading institutions</p>
-        <Marquee items={background.partners} className="text-ink/25" />
-        <p className="sr-only">{background.partners.join(', ')}</p>
-      </Reveal>
     </Section>
   )
 }
